@@ -9,17 +9,6 @@ const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
 
-//Nodemailer Setup
-const nodemailer = require("nodemailer");
-
-let transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "splitease13@gmail.com",
-    pass: process.env.APP_PASSWORD,
-  },
-});
-
 // Connect to MongoDB
 let MONGO_URL = "mongodb://127.0.0.1:27017/splitexpenses";
 
@@ -91,11 +80,6 @@ app.use((req, res, next) => {
 //Require route
 const route = require("./routes/route");
 app.use(route);
-
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 app.listen(3000, () => {
   console.log("listening on port 3000");

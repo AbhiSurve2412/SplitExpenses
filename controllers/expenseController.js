@@ -1,6 +1,16 @@
 const User = require("../models/user");
 const Expense = require("../models/Expense");
 
+//Nodemailer Setup
+const nodemailer = require("nodemailer");
+
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "splitease13@gmail.com",
+    pass: process.env.APP_PASSWORD,
+  },
+});
 
 const expenseController = {
   getSplit: (req, res) => {
