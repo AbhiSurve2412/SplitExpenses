@@ -1,7 +1,13 @@
 <% layout('/layouts/boilerplate') -%>
 <div class="split-container container mt-5">
   <h2>Split Expense</h2>
-  <form method="post" action="/split" id="splitForm" class="needs-validation" novalidate>
+  <form
+    method="post"
+    action="/split"
+    id="splitForm"
+    class="needs-validation"
+    novalidate
+  >
     <div class="split-form-group mb-3">
       <label for="split-amount">Amount</label>
       <input
@@ -25,34 +31,16 @@
       <div class="invalid-feedback">Description is required.</div>
     </div>
     <div class="split-form-group mb-3">
-      <label>Emails</label>
       <div id="split-emailFields">
-        <div class="split-input-group mb-3">
-          <input
-            type="email"
-            class="form-control split-form-control"
-            name="emails[]"
-            placeholder="Email"
-            required
-          />
-          <div class="invalid-feedback">Email is required.</div>
-          <div class="split-input-group-append">
-            <button
-              class="btn btn-outline-secondary remove-field"
-              type="button"
-            >
-              &times;
-            </button>
-          </div>
-        </div>
+        <!-- Container for dynamically added email fields -->
       </div>
       <button type="button" class="split btn btn-primary" id="addEmailField">
-        Add more
+        Add Email
       </button>
     </div>
     <div class="d-flex justify-content-center">
       <button type="submit" class="split btn btn-success">Split</button>
-  </div>  
+    </div>
   </form>
 </div>
 
@@ -64,13 +52,14 @@
 
     function addEmailField() {
       const newFieldHtml = `
-            <div class="split-input-group mb-3">
-                <input type="email" class="form-control split-form-control" name="emails[]" placeholder="Email" required>
-                <div class="invalid-feedback">Email is required.</div>
-                <div class="split-input-group-append">
-                    <button class="btn btn-outline-secondary remove-field" type="button">&times;</button>
-                </div>
-            </div>`;
+      <div class="split-input-group mb-3">
+          <label>Email</label>
+          <div class="email-input-container d-flex align-items-center">
+              <input type="email" class="form-control split-form-control" name="emails[]" required>
+              <button class="btn btn-outline-secondary remove-field ms-2" type="button" aria-label="Remove email field">&times;</button>
+          </div>
+          <div class="invalid-feedback">Email is required.</div>
+      </div>`;
       emailFieldsContainer.insertAdjacentHTML("beforeend", newFieldHtml);
     }
 
@@ -97,3 +86,4 @@
     );
   });
 </script>
+
