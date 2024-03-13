@@ -1,0 +1,34 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+  <div class="login-section-container">
+    <h2 class="login-heading col-6 offset-3">Login on Image Vault</h2>
+    <div class="login-row mt-3">
+      <div class="login-col col-6 offset-3">
+        <form method="POST" action="/login" novalidate class="login-needs-validation">
+          <div class="login-mb-3 mb-3">
+            <label for="email" class="login-form-label form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="login-form-control form-control"
+              required
+            />
+          </div>
+          <div class="login-mb-3 mb-3">
+            <label for="password" class="login-form-label form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="login-form-control form-control"
+              required
+            />
+          </div>
+          <button class="login-btn btn btn-success">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

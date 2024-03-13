@@ -1,0 +1,31 @@
+<% layout('/layouts/boilerplate') -%>
+<div class="mainContent flex-container mb-5">
+  <div class="content">
+    <div class="container mt-5">
+      <div class="jumbotron p-5 shadow-sm">
+        <h1 class="display-4">Welcome to Split Expenses!</h1>
+        <% if (currUser) { %>
+          <p class="lead">Hello, <%= currUser.fullName %>. Ready to manage your expenses efficiently?</p>
+          <hr class="my-4">
+          <p>Split expenses with ease, track your balances, and settle up with friends and family instantly.</p>
+          <!-- Split Expenses Feature Interface -->
+          <div>
+            <a class="btn btn-primary btn-lg" href="/split" role="button">Split</a>
+            <a class="btn btn-secondary btn-lg" href="#" role="button">View History</a>
+            <a href="/logout" class="btn btn-danger btn-lg">Logout</a>
+          </div>
+        <% } else { %>
+          <p class="lead">Split expenses with your friends and family easily and fairly.</p>
+          <hr class="my-4">
+          <p>Sign up or log in to start managing your shared expenses. Keep track of your balances, split costs, and settle up payments all in one place.</p>
+          <!-- Signup and Login Buttons -->
+          <div>
+            <a href="/signup" class="btn btn-success btn-lg" role="button">Sign Up</a>
+            <a href="/login" class="btn btn-primary btn-lg" role="button">Login</a>
+          </div>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</div>

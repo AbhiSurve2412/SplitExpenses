@@ -1,0 +1,97 @@
+<% layout('/layouts/boilerplate') -%>
+<div class="split-container container mt-5">
+  <h2>Split Expense</h2>
+  <form id="splitForm" class="needs-validation" novalidate>
+    <div class="split-form-group mb-3">
+      <label for="split-amount">Amount</label>
+      <input
+        type="number"
+        class="form-control split-form-control"
+        id="split-amount"
+        name="amount"
+        required
+      />
+      <div class="invalid-feedback">Amount is required.</div>
+    </div>
+    <div class="split-form-group mb-3">
+      <label for="split-description">Description</label>
+      <input
+        type="text"
+        class="form-control split-form-control"
+        id="split-description"
+        name="description"
+        required
+      />
+      <div class="invalid-feedback">Description is required.</div>
+    </div>
+    <div class="split-form-group mb-3">
+      <label>Emails</label>
+      <div id="split-emailFields">
+        <div class="split-input-group mb-3">
+          <input
+            type="email"
+            class="form-control split-form-control"
+            name="emails[]"
+            placeholder="Email"
+            required
+          />
+          <div class="invalid-feedback">Email is required.</div>
+          <div class="split-input-group-append">
+            <button
+              class="btn btn-outline-secondary remove-field"
+              type="button"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" id="addEmailField">
+        Add more
+      </button>
+    </div>
+    <button type="submit" class="btn btn-success w-25">Split</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const addEmailFieldButton = document.getElementById("addEmailField");
+    const emailFieldsContainer = document.getElementById("split-emailFields");
+    const splitForm = document.getElementById("splitForm");
+
+    function addEmailField() {
+      const newFieldHtml = `
+            <div class="split-input-group mb-3">
+                <input type="email" class="form-control split-form-control" name="emails[]" placeholder="Email" required>
+                <div class="invalid-feedback">Email is required.</div>
+                <div class="split-input-group-append">
+                    <button class="btn btn-outline-secondary remove-field" type="button">&times;</button>
+                </div>
+            </div>`;
+      emailFieldsContainer.insertAdjacentHTML("beforeend", newFieldHtml);
+    }
+
+    addEmailFieldButton.addEventListener("click", function () {
+      addEmailField();
+    });
+
+    emailFieldsContainer.addEventListener("click", function (e) {
+      if (e.target.classList.contains("remove-field")) {
+        e.target.closest(".split-input-group").remove();
+      }
+    });
+
+    splitForm.addEventListener(
+      "submit",
+      function (event) {
+        if (!splitForm.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        splitForm.classList.add("was-validated");
+      },
+      false
+    );
+  });
+</script>

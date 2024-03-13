@@ -1,0 +1,68 @@
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .login-section-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 2rem auto;
+    width: 50%; 
+    max-width: 600px; 
+  }
+  
+
+  .login-heading {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px; 
+  }
+  
+  /* Style adjustments for login form fields */
+  .login-form-control {
+    height: 40px; 
+    padding: 10px;
+    font-size: 16px; 
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 15px; 
+    width: 100%;
+  }
+  
+  /* Label styling for clarity within the login form */
+  .login-form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+    font-size: 14px;
+  }
+  
+  /* Styling for the 'Login' button */
+  .login-btn {
+    display: block; 
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .login-btn:hover {
+    background-color: #218838; 
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-section-container {
+      width: 90%;
+      padding: 20px; 
+    }
+  }
+  

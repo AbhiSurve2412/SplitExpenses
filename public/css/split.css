@@ -1,0 +1,74 @@
+/* Container styling for the split expense form */
+.split-container {
+    background-color: #fff; /* White background for clarity */
+    padding: 2rem; /* Ample padding for spacing */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 600px; /* Restrict maximum width for better form focus */
+    margin: 40px auto; /* Center form in the viewport with top margin */
+  }
+  
+  /* Styling for form headings */
+  h2 {
+    color: #007bff; /* Bootstrap primary color for consistency */
+    margin-bottom: 1.5rem; /* Space between heading and form fields */
+  }
+  
+  /* Enhancements for form controls */
+  .split-form-control {
+    border-radius: 0.375rem; /* Match Bootstrap's border radius */
+    border: 1px solid #ced4da; /* Standard Bootstrap border */
+    padding: 0.5rem 0.75rem; /* Comfortable padding within inputs */
+  }
+  
+  /* Styling for the 'Add more' and 'Split' buttons */
+  .btn-primary, .btn-success {
+    letter-spacing: 0.05rem; /* Slightly spaced lettering */
+    font-weight: 500; /* Medium font weight */
+  }
+  
+  /* Specific styling for the 'Split' submit button */
+  .btn-success {
+    width: auto; /* Auto width based on content */
+    padding: 0.5rem 2rem; /* Padding adjusted for button size */
+    display: block; /* Block display */
+    margin: 1rem auto 0; /* Center button horizontally with top margin */
+  }
+  
+  /* Styling for the 'remove-field' button */
+  .remove-field {
+    margin-left: 15px; /* Space between email input and remove button */
+    color: #dc3545; /* Use Bootstrap's danger color for deletion indication */
+  }
+  
+  /* Adjust input group for email fields */
+  .split-input-group {
+    display: flex; /* Flex display for inline elements */
+    align-items: center; /* Align items for visual consistency */
+  }
+  
+  /* Invalid feedback enhancement */
+  .invalid-feedback {
+    display: none; /* Hide by default */
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #dc3545;
+  }
+  
+  .was-validated .split-form-control:invalid ~ .invalid-feedback {
+    display: block; /* Show on invalid input after validation attempt */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .split-container {
+      padding: 1rem; /* Smaller padding on smaller screens */
+      margin: 20px auto; /* Smaller margin */
+    }
+  
+    .btn-success {
+      padding: 0.375rem 1.5rem; /* Adjust button padding on smaller screens */
+    }
+  }
+  

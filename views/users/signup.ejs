@@ -1,0 +1,33 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+    <div class="signup-form__container container mt-5">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="signup-form__heading text-center my-4">Start Sharing Now</h2>
+            <form method="POST" action="/signup" class="signup-form needs-validation" novalidate>
+                <div class="signup-form__field mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" name="fullName" id="fullName" class="form-control signup-form__input" placeholder="Full Name" required>
+                    <div class="invalid-feedback">
+                        Please enter your full name.
+                    </div>
+                </div>
+                <div class="signup-form__field mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control signup-form__input" placeholder="Write an Email Address" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+                <div class="signup-form__field mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control signup-form__input" placeholder="Set a Password" required>
+                    <div class="invalid-feedback">
+                        Please enter your password.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success signup-form__button">SignUp</button>
+            </form>
+        </div>
+    </div>
+</body>

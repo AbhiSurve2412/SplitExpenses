@@ -1,0 +1,127 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: 10rem;
+}
+/* General Navbar Styles */
+.navbar {
+  background-color: #ffffff; 
+  border-bottom: 2px solid #ebebeb; 
+  background-color: green;
+  padding: 0.5rem 1rem; 
+}
+
+.navbar-brand {
+  color: #fe424d; 
+  font-weight: bold; 
+  font-size: 1.2rem; 
+}
+
+.navbar-toggler {
+  border: none; 
+  outline: none; 
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="#fe424d" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>'); /* Custom toggler icon with color matching the brand */
+}
+
+/* Enhanced Navbar Link Styles */
+.nav-link {
+  color: #222222;
+  margin: 0 0.5rem; 
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; 
+  display: inline-block; 
+  position: relative; 
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #fe424d; 
+  text-decoration: none; 
+  transform: scale(1.05); 
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fe424d; 
+  transition: width 0.3s ease-in-out; 
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+}
+/* Sticky Top */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1020; 
+}
+
+/* Navbar Background Variation */
+.bg-body-light {
+  background-color:#ffff; 
+}
+
+/* Footer */
+
+/* Footer container styling */
+.f-info {
+    text-align: center;
+    height: auto; /* Changed to 'auto' for flexible height */
+    padding: 2rem 0; /* Ensures padding on top and bottom */
+    background-color: #333; /* Darker shade for contrast */
+    color: #fff; /* Light text color for readability */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* Changed from 'space-evenly' */
+  }
+  
+  /* Social icons container */
+  .f-info-socials {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0; /* Adds padding for better spacing */
+  }
+  
+  /* Social icon styling */
+  .f-info-socials i {
+    margin: 0 1rem; /* Uniform margin for spacing around icons */
+    font-size: 1.5rem; /* Slightly larger for better visibility */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover effect for icons */
+  .f-info-socials i:hover {
+    color: #fe424d; /* Bright color for interaction feedback */
+    transform: scale(1.1); /* Slight increase in size on hover */
+  }
+  
+  /* Ensure accessibility */
+  .f-info-socials a {
+    color: inherit; /* Inherits color from parent for consistency */
+    text-decoration: none; /* Removes underline from links */
+  }
+  
+  /* Adjustments for responsiveness */
+  @media (max-width: 768px) {
+    .f-info-socials {
+      flex-direction: column; /* Stack icons vertically on smaller screens */
+    }
+  
+    .f-info-socials i {
+      margin: 0.5rem 0; /* Adjusted margin for vertical stacking */
+    }
+  }
+  

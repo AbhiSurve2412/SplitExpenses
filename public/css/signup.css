@@ -1,0 +1,88 @@
+/* General styles for the body to set the font and background */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Styles specifically for the signup form container */
+.signup-form__container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+/* Ensures the heading is visually distinct and centered */
+.signup-form__heading {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Applies to each field within the form for spacing and alignment */
+.signup-form__field {
+  margin-bottom: 1rem;
+}
+
+/* Additional styles for input fields to enhance visibility and interaction */
+.signup-form__input {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  height: 48px;
+  padding: 6px 12px;
+  font-size: 16px;
+  width: 100%; /* Ensures the input fields stretch to container width */
+}
+
+/* Adjust label appearance for clarity */
+.form-label {
+  display: inline-block;
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+/* Custom styling for the sign up button to make it stand out */
+.signup-form__button {
+  width: 100%; /* Button spans the full width of its container */
+  padding: 10px 0;
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.signup-form__button:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+  box-shadow: 0 0 0 0.2rem rgba(40,167,69,.5);
+}
+
+/* Provides feedback for invalid inputs */
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: #dc3545;
+}
+
+.was-validated .signup-form__input:invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .signup-form__container {
+    padding: 1rem;
+    margin: 1rem;
+    width: auto;
+  }
+
+  .signup-form__heading {
+    margin-top: 1rem;
+  }
+}
