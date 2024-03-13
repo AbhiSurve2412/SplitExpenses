@@ -38,7 +38,7 @@ const authController = {
   }),
 
   // Handle user logout
-  logout: (req, res) => {
+  getLogout: (req, res) => {
     req.logout(err => {
       if (err) return next(err);
       req.flash("success", "Successfully logged out");
