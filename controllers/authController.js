@@ -15,7 +15,7 @@ const authController = {
       const registeredUser = await User.register(newUser, password);
       req.login(registeredUser, err => {
         if (err) return next(err);
-        req.flash("success", "Welcome to Image Vault!");
+        req.flash("success", "Welcome to SplitEase!");
         res.redirect("/");
       });
     } catch (e) {
@@ -34,7 +34,7 @@ const authController = {
     failureRedirect: "/login", 
     failureFlash: true,
     successRedirect: "/",
-    successFlash: "Welcome back to Image Vault!"
+    successFlash: "Welcome back to SplitEase!"
   }),
 
   // Handle user logout

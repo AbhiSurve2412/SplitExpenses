@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -5,6 +8,17 @@ const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
+
+//Nodemailer Setup
+const nodemailer = require("nodemailer");
+
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "splitease13@gmail.com",
+    pass: process.env.APP_PASSWORD,
+  },
+});
 
 // Connect to MongoDB
 let MONGO_URL = "mongodb://127.0.0.1:27017/splitexpenses";
@@ -81,12 +95,68 @@ const authRoutes = require("./routes/authRoutes");
 app.use("/", authRoutes);
 
 app.get("/split", (req, res) => {
-  res.render("split", { User });
+  if(!req.user)
+  {
+    req.flash("error","You need to be logged in to Split Expenses");
+    res.redirect("/login");
+  }
+  else
+  {
+    res.render("split", { User });
+  }
 });
 
 app.post("/split", (req, res) => {
-  console.log(req.body);
+  const { amount, description, emails } = req.body;
+  const totalParticipants = emails.length + 1; 
+  const splitAmount = amount / totalParticipants;
+  const sharePerEmail = amount / totalParticipants ;
+
+  const emailList = emails.join(", ");
+  const emailBody = `
+    <p>Hello,</p>
+    <p>The expense for <strong>'${description}'</strong> has been calculated and needs to be split among the participants. Here are the details:</p>
+    <ul>
+      <li>Total Amount: ₹${amount}</li>
+      <li>Split Between: ${emails.length} participants (excluding yourself)</li>
+      <li>Your Share: ₹${splitAmount.toFixed(2)}</li>
+      <li>Each Participant's Share: ₹${sharePerEmail.toFixed(2)}</li>
+    </ul>
+    <p>Please make sure to settle your share at your earliest convenience. If you have any questions, feel free to reply to this email.</p>
+    <p>Best,</p>
+    <p>${req.user.fullName}</p>
+`;
+
+  let mailOptions = {
+    from: '"SplitEase Platform" <splitease13@gmail.com>',
+    to: emailList,
+    subject: "Your Split Expense Details",
+    text: `The expense for '${description}' has been split. Your share is ₹${splitAmount.toFixed(
+      2
+    )}. Each participant's share is ₹${sharePerEmail.toFixed(2)}rs.`,
+    html: emailBody,
+  };
+
+  transporter
+    .sendMail(mailOptions)
+    .then((info) => {
+      console.log("Message sent: %s", info.messageId);
+      req.flash(
+        "success",
+        "Expenses successfully split and notifications sent!"
+      );
+      res.redirect("/");
+    })
+    .catch((error) => {
+      console.error("Error sending email:", error);
+      req.flash(
+        "error",
+        "Failed to split expenses and send notifications. Please try again."
+      );
+      res.redirect("/split");
+    });
 });
+
 app.get("/", (req, res) => {
   res.render("index");
 });

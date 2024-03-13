@@ -10,11 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "connect-flash": "^0.1.1",
+    "dot": "^1.1.3",
+    "dotenv": "^16.4.5",
     "ejs-mate": "^4.0.0",
+    "env": "^0.0.2",
     "express": "^4.18.3",
     "express-session": "^1.18.0",
+    "mailjet-sendemail": "^1.1.4",
     "mongoose": "^8.2.1",
+    "nodemailer": "^6.9.12",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0"
