@@ -1,7 +1,7 @@
 <% layout('/layouts/boilerplate') -%>
 <div class="split-container container mt-5">
   <h2>Split Expense</h2>
-  <form id="splitForm" class="needs-validation" novalidate>
+  <form method="post" action="/split" id="splitForm" class="needs-validation" novalidate>
     <div class="split-form-group mb-3">
       <label for="split-amount">Amount</label>
       <input
@@ -46,11 +46,13 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" id="addEmailField">
+      <button type="button" class="split btn btn-primary" id="addEmailField">
         Add more
       </button>
     </div>
-    <button type="submit" class="btn btn-success w-25">Split</button>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="split btn btn-success">Split</button>
+  </div>  
   </form>
 </div>
 

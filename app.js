@@ -80,12 +80,16 @@ const authRoutes = require("./routes/authRoutes");
 // Use routes
 app.use("/", authRoutes);
 
-app.get("/split",(req, res) => {
-    res.render("split",{User});
+app.get("/split", (req, res) => {
+  res.render("split", { User });
+});
+
+app.post("/split", (req, res) => {
+  console.log(req.body);
 });
 app.get("/", (req, res) => {
-    res.render("index");
-})
+  res.render("index");
+});
 
 app.listen(3000, () => {
   console.log("listening on port 3000");

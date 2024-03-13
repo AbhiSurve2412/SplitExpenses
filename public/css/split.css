@@ -22,13 +22,13 @@
   }
   
   /* Styling for the 'Add more' and 'Split' buttons */
-  .btn-primary, .btn-success {
+  .split .btn-primary, .btn-success {
     letter-spacing: 0.05rem; /* Slightly spaced lettering */
     font-weight: 500; /* Medium font weight */
   }
   
   /* Specific styling for the 'Split' submit button */
-  .btn-success {
+  .split .btn-success {
     width: auto; /* Auto width based on content */
     padding: 0.5rem 2rem; /* Padding adjusted for button size */
     display: block; /* Block display */
@@ -67,7 +67,7 @@
       margin: 20px auto; /* Smaller margin */
     }
   
-    .btn-success {
+    .split .btn-success {
       padding: 0.375rem 1.5rem; /* Adjust button padding on smaller screens */
     }
   }
