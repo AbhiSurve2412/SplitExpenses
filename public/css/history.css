@@ -1,0 +1,56 @@
+/* General page styling */
+body {
+    background-color: #f4f4f9;
+}
+
+/* Title Styling */
+.splitEase-title {
+    color: #495057;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Card Styling */
+.splitEase-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* Adds rounded corners to the card */
+}
+
+.splitEase-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.splitEase-card-title {
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.splitEase-card-subtitle {
+    color: #6c757d; /* Bootstrap secondary text color */
+}
+
+.splitEase-card-text {
+    color: #343a40; /* Bootstrap dark grey */
+}
+
+.splitEase-participant-email {
+    font-size: 0.9rem;
+    color: #17a2b8; /* Bootstrap info color for a bit of pop */
+}
+
+/* Footer/date text styling */
+.splitEase-card-footer {
+    font-size: 0.8rem;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff; /* Keep consistent with Bootstrap primary color */
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}

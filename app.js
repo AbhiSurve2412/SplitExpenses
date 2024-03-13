@@ -25,6 +25,7 @@ let MONGO_URL = "mongodb://127.0.0.1:27017/splitexpenses";
 
 //model require
 const User = require("./models/user");
+const Expense = require("./models/Expense");
 
 //Passport require
 const passport = require("passport");
@@ -94,23 +95,37 @@ const authRoutes = require("./routes/authRoutes");
 // Use routes
 app.use("/", authRoutes);
 
-app.get("/split", (req, res) => {
-  if(!req.user)
-  {
-    req.flash("error","You need to be logged in to Split Expenses");
+app.get("/history", async (req, res) => {
+  if (!req.user) {
+    req.flash("error", "Please Log-In To See History");
     res.redirect("/login");
+  } else {
+    try {
+      const expenses = await Expense.find({ userId: req.user._id })
+        .sort({ date: -1 })
+        .lean();
+      res.render("history", { expenses });
+    } catch (error) {
+      console.error("Failed to fetch expenses:", error);
+      req.flash("error", "Failed to fetch expense history.");
+      res.redirect("/");
+    }
   }
-  else
-  {
+});
+app.get("/split", (req, res) => {
+  if (!req.user) {
+    req.flash("error", "You need to be logged in to Split Expenses");
+    res.redirect("/login");
+  } else {
     res.render("split", { User });
   }
 });
 
-app.post("/split", (req, res) => {
+app.post("/split", async (req, res) => {
   const { amount, description, emails } = req.body;
-  const totalParticipants = emails.length + 1; 
+  const totalParticipants = emails.length + 1;
   const splitAmount = amount / totalParticipants;
-  const sharePerEmail = amount / totalParticipants ;
+  const sharePerEmail = amount / totalParticipants;
 
   const emailList = emails.join(", ");
   const emailBody = `
@@ -125,7 +140,7 @@ app.post("/split", (req, res) => {
     <p>Please make sure to settle your share at your earliest convenience. If you have any questions, feel free to reply to this email.</p>
     <p>Best,</p>
     <p>${req.user.fullName}</p>
-`;
+  `;
 
   let mailOptions = {
     from: '"SplitEase Platform" <splitease13@gmail.com>',
@@ -137,18 +152,40 @@ app.post("/split", (req, res) => {
     html: emailBody,
   };
 
+  // Attempt to send the email
   transporter
     .sendMail(mailOptions)
-    .then((info) => {
+    .then(async (info) => {
       console.log("Message sent: %s", info.messageId);
-      req.flash(
-        "success",
-        "Expenses successfully split and notifications sent!"
-      );
-      res.redirect("/");
+      // Email sent successfully, now save the expense
+      try {
+        const newExpense = new Expense({
+          userId: req.user._id,
+          amount: amount,
+          description: description,
+          emails: emails,
+          date: new Date(),
+        });
+
+        await newExpense.save();
+        console.log("Expense record saved successfully.");
+        req.flash(
+          "success",
+          "Expenses successfully split and notifications sent!"
+        );
+        res.redirect("/");
+      } catch (saveError) {
+        console.error("Error saving expense record:", saveError);
+        req.flash(
+          "error",
+          "Expense was split and emails sent, but failed to save the record."
+        );
+        res.redirect("/split");
+      }
     })
-    .catch((error) => {
-      console.error("Error sending email:", error);
+    .catch((sendError) => {
+      // Handle email sending error
+      console.error("Error sending email:", sendError);
       req.flash(
         "error",
         "Failed to split expenses and send notifications. Please try again."

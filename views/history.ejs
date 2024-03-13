@@ -1,0 +1,39 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4 splitEase-title">Expense History</h2>
+        <div class="row">
+            <% expenses.forEach(expense => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card splitEase-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title splitEase-card-title"><%= expense.description %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted splitEase-card-subtitle">Total Amount: ₹<%= expense.amount %></h6>
+                            <p class="card-text splitEase-card-text">Split Between: <%= expense.emails.length + 1 %> participants (including you)</p>
+                            <p class="card-text splitEase-card-text">Your Share: ₹<%= (expense.amount / (expense.emails.length + 1)).toFixed(2) %></p>
+                            <p class="card-text splitEase-card-text">Participants: 
+                                <ul>
+                                    <% expense.emails.forEach(email => { %>
+                                        <li class="splitEase-participant-email"><%= email %></li>
+                                    <% }) %>
+                                </ul>
+                            </p>
+                            <p class="card-text splitEase-card-footer">
+                                <small class="text-muted">
+                                    Date: <%= new Date(expense.date).toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="row">
+            <div class="col text-center mt-4">
+                <a href="/" class="btn btn-primary">Go Back Home</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
