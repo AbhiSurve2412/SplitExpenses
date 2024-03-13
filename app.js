@@ -7,10 +7,12 @@ const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 
 // Connect to MongoDB
-let MONGO_URL = "mongodb://127.0.0.1:27017/splitexpenses";
+// let MONGO_URL = "mongodb://127.0.0.1:27017/splitexpenses";
+const dbUrl = process.env.ATLASDB_URL;
 
 //model require
 const User = require("./models/user");
@@ -38,11 +40,23 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
+
+
+//connect mongo(Used for Deployment)
+const store = MongoStore.create({
+  mongoUrl : dbUrl,
+  crypto : {
+    secret: "mysupersecretcode",
+  },
+  touchAfter : 24*3600,
+});
+store.on('error', err => console.log("ERROR IN MONGO CONNECT",err));
 
 //Sessions setup
 const sessionOptions = {
+  store,
   secret: "mysupersecretcode",
   resave: false,
   saveUninitialized: true,
@@ -52,6 +66,10 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
+
+
+
+
 app.use(session(sessionOptions));
 app.use(flash());
 
