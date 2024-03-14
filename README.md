@@ -58,7 +58,7 @@ After logging in, users can create new expenses by specifying the details and ad
 ### Home Page
 ![Home Page](screenshots/home_page.png)
 
-### Signup/Login Page
+### Signup
 ![Signup](/screenshots/signup_page.png)
 
 ### Login Page
@@ -68,7 +68,7 @@ After logging in, users can create new expenses by specifying the details and ad
 ![Expense Split Form](/screenshots/split_form.png)
 
 ### Expense History View
-![Expense History View](/screenshots/expense_history_view.png)
+![Expense History View](/screenshots/expense_history.png)
 
 ### Mail Notification
 ![Mail Notification](/screenshots/mail_notification.png)
