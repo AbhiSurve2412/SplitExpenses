@@ -56,7 +56,7 @@ After logging in, users can create new expenses by specifying the details and ad
 ## Snapshots
 
 ### Home Page
-![Home Page](screenshots/home_page.pn)
+![Home Page](screenshots/home_page.png)
 
 ### Signup/Login Page
 ![Signup](/screenshots/signup_page.png)
