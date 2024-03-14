@@ -59,7 +59,7 @@ After logging in, users can create new expenses by specifying the details and ad
 ![Home Page](/screenshots/home_page.png)
 
 ### Signup/Login Page
-![Signup/Login Page](/screenshots/signup_page.png)
+![Signup/Login Page](./screenshots/signup_page.png)
 
 ### Login Page
 ![Login Page](/screenshots/login_page.png)
