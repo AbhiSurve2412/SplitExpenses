@@ -56,22 +56,22 @@ After logging in, users can create new expenses by specifying the details and ad
 ## Snapshots
 
 ### Home Page
-![Home Page](/screenshots/home_page.png)
+![Home Page](./screenshots/home_page.png)
 
 ### Signup/Login Page
-![Signup/Login Page](./screenshots/signup_page.png)
+![Signup](./screenshots/signup_page.png)
 
 ### Login Page
-![Login Page](/screenshots/login_page.png)
+![Login Page](./screenshots/login_page.png)
 
 ### Expense Creation Form
-![Expense Split Form](/screenshots/split_form.png)
+![Expense Split Form](./screenshots/split_form.png)
 
 ### Expense History View
-![Expense History View](/screenshots/expense_history_view.png)
+![Expense History View](./screenshots/expense_history_view.png)
 
 ### Mail Notification
-![Mail Notification](/screenshots/mail_notification.png)
+![Mail Notification](./screenshots/mail_notification.png)
 
 
 ## Built With
